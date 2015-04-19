@@ -1,0 +1,135 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package supermarket;
+import java.util.Calendar;
+import java.util.Date;
+/**
+ *
+ * @author Sandy
+ */
+public class SuperMarket {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //=====PRODUK======//
+        
+        double harga;
+        
+        Produk produk1=new Produk();
+        Produk produk2=new Produk();
+        Produk produk3=new Produk();
+        Produk produk4=new Produk();
+        
+        
+        produk1.setId("1343434");   
+        produk1.setNama("apel");
+        produk1.setHarga(15000);
+        produk1.setStok(15);
+        produk1.setDiscount(900);
+        
+        
+        produk2.setId("1324232");
+        produk2.setNama("Mangga");
+        produk2.setHarga(9000);
+        produk2.setStok(10);
+        produk2.setDiscount(500);
+        
+        produk3.setId("2323232");
+        produk3.setNama("Kaos");
+        produk3.setHarga(75000);
+        produk3.setStok(23);
+        produk3.setDiscount(9900);
+        
+        produk3.setId("2564576");
+        produk3.setNama("Kemeja");
+        produk3.setHarga(125000);
+        produk3.setStok(17);
+        produk3.setDiscount(10900);
+        
+        //===PEGAWAI===//
+        Pegawai pegawai1=new Pegawai();
+        pegawai1.setId("12343455");
+        pegawai1.setNama("Fulana bin Fulan");
+        Alamat alamatPegawai1=new Alamat();
+        alamatPegawai1.setJalan("Lurus");
+        alamatPegawai1.setNo("114");
+        alamatPegawai1.setKec("Jatinegara");
+        alamatPegawai1.setKel("BidaraCina");
+        alamatPegawai1.setKota("JakartaTimur");
+        pegawai1.setAlamat(alamatPegawai1);
+        pegawai1.setPosisi("Kasir");
+        
+        Pegawai pegawai2=new Pegawai();
+        pegawai2.setId("345345");
+        pegawai2.setNama("Fulana bin Fulan");
+        Alamat alamatPegawai2=new Alamat();
+        alamatPegawai2.setJalan("Belok");
+        alamatPegawai2.setNo("23");
+        alamatPegawai2.setKec("Rambutan");
+        alamatPegawai2.setKel("Manggis");
+        alamatPegawai2.setKota("Jakarta Pusat");
+        pegawai2.setAlamat(alamatPegawai2);
+        pegawai2.setPosisi("Manager");
+        
+        //==PEMBELI====///
+        Pembeli pembeli1=new Pembeli();
+        pembeli1.setId(null);
+        pembeli1.setAlamat(null);
+        pembeli1.setNama(null);
+        pembeli1.setPoin(0);
+        pembeli1.setStatus("bukanMember");
+        
+        Pembeli pembeli2=new Pembeli();
+        pembeli2.setId("12342453");
+        pembeli2.setNama("Sandy Pradana");
+        Alamat alamatPembeli2=new Alamat();
+        alamatPembeli2.setJalan("Sensus");
+        alamatPembeli2.setNo("49");
+        alamatPembeli2.setKel("Bidara Cina");
+        alamatPembeli2.setKec("Jatinegara");
+        alamatPembeli2.setKota("JakartaTimur");
+        pembeli2.setAlamat(alamatPembeli2);
+        
+        //====TRANSAKSI====///
+        
+        Transaksi transaksi1=new Transaksi ();
+        transaksi1.setNoTransaksi(1);
+        transaksi1.setProduk(produk3);
+        transaksi1.setTotalBelanja(3);
+        transaksi1.setPegawai(pegawai1);
+        transaksi1.setPembeli(pembeli2);
+        harga=produk3.getHarga()*transaksi1.getTotalBelanja();
+        transaksi1.hitungKembali(produk4.getHarga(), transaksi1.getDibayar());
+       
+        try{
+             transaksi1.setDibayar(5000);
+        } catch(Exception e){
+            System.out.println("Terjadi Error : " +e.getMessage());
+        }
+        
+        
+        //====TANGGAL===//
+        Date waktu;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2015);
+        cal.set(Calendar.MONTH, Calendar.APRIL);
+        cal.set(Calendar.DATE, 14);
+        waktu = cal.getTime();
+        
+        //===CETAK==//
+        
+        System.out.println("No. Transaksi : "+transaksi1.getNoTransaksi());
+        System.out.println("Nama Produk : "+produk3.getNama());
+        System.out.println("Pembeli : "+pembeli2.getNama());
+        System.out.println("Pegawai : "+pegawai1.getNama());
+        System.out.println("Total Harga : "+harga);
+        System.out.println("Dibayar : "+transaksi1.getDibayar());
+        System.out.println("Uang Kembalian" +transaksi1.getKembali());
+    }
+    
+}
